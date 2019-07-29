@@ -187,3 +187,145 @@ table.
 
 SELECT count(*) from customers
 ;
+
+
+==========
+15
+
+-----
+
+Write a query that counts the number of orders (in the orders table) shipped to California.
+
+-----
+
+
+SELECT COUNT(*) FROM orders WHERE shipto_state='CA';
+
+
+==========
+16
+
+-----
+
+Write a query that shows the total amount of money spent across all melon
+orders.
+
+-----
+
+
+SELECT SUM(order_total) FROM orders
+;
+
+
+==========
+17
+
+-----
+
+Write a query that shows the average order cost.
+
+-----
+
+
+SELECT AVG(order_total) FROM orders;
+
+
+==========
+18
+
+-----
+
+Write a query that shows the order total that was lowest in price.
+
+-----
+
+
+SELECT MIN(order_total) FROM orders
+;
+
+
+==========
+19
+
+-----
+
+Write a query that fetches the id of the customer whose email is
+'pclark74@gmail.com'.
+
+-----
+
+
+SELECT id FROM customers WHERE email='pclark74@gmail.com';
+
+
+==========
+20
+
+-----
+
+Write a query that shows the id, status and order_total for all orders 
+made by customer 100.
+
+-----
+
+
+SELECT id, status, order_total FROM orders WHERE customer_id = 100;
+
+
+==========
+21
+
+-----
+
+Write a single query that shows the id, status, and order total for all
+orders made by 'pclark74@gmail.com'. Use a subselect to do this.
+
+
+-----
+
+
+SELECT id, status, order_total FROM orders WHERE customer_id= (SELECT id from customers WHERE email='pclark74@gmail.com');
+
+
+==========
+22
+
+-----
+
+Write a query that shows the id, status, and order total for all orders
+made by 'pclark74@gmail.com'. Use a join to do this.
+
+-----
+
+
+SELECT orders.id, status, order_total 
+FROM orders JOIN customers
+ON customer_id = customers.id
+WHERE email = 'pclark74@gmail.com';
+
+
+==========
+23
+
+-----
+
+Write a query that shows all columns in the order_items table for order #2725.
+
+-----
+
+
+SELECT * FROM order_items WHERE order_id=2725;
+
+
+==========
+24
+
+-----
+
+Write a query that shows the common_name, melon_type, quantity,
+unit_price and total_price for all the melons in order #2725.
+
+-----
+
+
+SELECT common_name, melon_type, quantity, unit_price, total_price FROM melons JOIN order_items ON order_items.melon_id = melons.id WHERE order_id =2725;
