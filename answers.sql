@@ -329,3 +329,17 @@ unit_price and total_price for all the melons in order #2725.
 
 
 SELECT common_name, melon_type, quantity, unit_price, total_price FROM melons JOIN order_items ON order_items.melon_id = melons.id WHERE order_id =2725;
+
+
+==========
+25
+
+-----
+
+Write a query that shows the total amount of revenue that comes from
+internet orders.
+
+-----
+
+
+SELECT SUM(order_total) FROM orders WHERE salesperson_id is NULL;
